@@ -1,0 +1,10 @@
+[package]
+name = "dpi"
+version = "0.1.0"
+authors = ["dalance@gmail.com"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]

@@ -1,0 +1,8 @@
+csrc/
+dpi/target/
+dpi/Cargo.lock
+obj_dir/
+simv
+simv.daidir/
+ucli.key
+vc_hdrs.h
