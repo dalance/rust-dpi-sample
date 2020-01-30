@@ -38,6 +38,6 @@ pub extern "C" fn add_i8(x: i8, y: i8) -> i8 {
 
 ## System Verilog side
 
-```system_verilog
+```systemverilog
 import "DPI-C" function byte add_i8 (input byte x, input byte y);
 ```
