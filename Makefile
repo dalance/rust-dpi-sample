@@ -6,7 +6,7 @@ run: $(SIM_BINARY)
 	cd obj_dir; ./Vtest
 
 $(SIM_BINARY): $(LIB_DPI) test.sv sim_main.cpp
-	VERILATOR_ROOT=~/work/repos/verilator verilator --cc test.sv ../$(LIB_DPI) --exe sim_main.cpp
+	verilator --cc test.sv ../$(LIB_DPI) --exe sim_main.cpp
 	$(MAKE) -C obj_dir -f Vtest.mk Vtest
 
 $(LIB_DPI): dpi/src/*.rs
