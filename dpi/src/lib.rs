@@ -35,8 +35,8 @@ pub extern "C" fn xor_logic(x: &[u8; 64], y: &[u8; 64], z: &mut [u8; 64]) {
 }
 
 #[no_mangle]
-pub extern "C" fn packed_array(x: &[i32; 10]) {
-    print!("packed_array: ");
+pub extern "C" fn unpacked_array(x: &[i32; 10]) {
+    print!("unpacked_array: ");
     for i in 0..10 {
         print!("{}", x[i]);
     }

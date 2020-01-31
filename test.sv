@@ -3,8 +3,10 @@ import "DPI-C" function shortint add_i16 (input shortint x, input shortint y);
 import "DPI-C" function int add_i32 (input int x, input int y);
 import "DPI-C" function longint add_i64 (input longint x, input longint y);
 import "DPI-C" function void add_by_output (input longint x, input longint y, output longint z);
-import "DPI-C" function void xor_logic (input bit [511:0] x, input bit [511:0] y, output [511:0] z);
-import "DPI-C" function void packed_array (input int x[10]);
+import "DPI-C" function void xor_logic (input bit [511:0] x, input bit [511:0] y, output bit [511:0] z);
+`ifndef VERILATOR
+    import "DPI-C" function void unpacked_array (input int x[10]);
+`endif
 import "DPI-C" function void print (input string x);
 import "DPI-C" function chandle create();
 import "DPI-C" function void destroy(input chandle x);
@@ -25,13 +27,13 @@ module test;
         add_by_output(1,2,z1);
         $display("%x + %x = %x", 1, 2, z1);
 
-        // use unpacked bit
+        // use packed bit
         xor_logic('h11,'h22,z2);
         $display("%x ^ %x = %x", 'h11, 'h22, z2);
 
         // V erilator can't compile
         `ifndef VERILATOR
-            packed_array(array);
+            unpacked_array(array);
         `endif
 
         // use string
