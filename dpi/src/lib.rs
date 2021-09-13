@@ -1,6 +1,7 @@
 use std::ffi::CStr;
 use std::os::raw::c_char;
 use std::ptr::NonNull;
+use sv4state::{svLogicVecVal, Sv4State};
 
 #[no_mangle]
 pub extern "C" fn add_i8(x: i8, y: i8) -> i8 {
@@ -28,10 +29,16 @@ pub extern "C" fn add_by_output(x: i64, y: i64, z: &mut i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn xor_logic(x: &[u8; 64], y: &[u8; 64], z: &mut [u8; 64]) {
+pub extern "C" fn xor_bit(x: &[u8; 64], y: &[u8; 64], z: &mut [u8; 64]) {
     for i in 0..64 {
         z[i] = x[i] ^ y[i];
     }
+}
+
+#[no_mangle]
+pub extern "C" fn show_logic(x: &[svLogicVecVal; 4]) {
+    let sv_u64 = Sv4State::<u64>::from_dpi(x);
+    println!("{:x}", sv_u64[0]);
 }
 
 #[no_mangle]

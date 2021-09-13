@@ -8,3 +8,4 @@ edition = "2018"
 crate-type = ["cdylib"]
 
 [dependencies]
+sv4state = "0.2.0"
